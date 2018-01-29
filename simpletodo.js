@@ -5,15 +5,22 @@ if(Meteor.isClient){
     'player': function(){
       return TaskList.find();
     },
-    'otherHelperFunction': function(){
-      return "Some other function";
+    'selectedClass': function(){
+        var taskId = this._id;
+        var selectedTask = Session.get('selectedTask');
+        if(taskId == selectedTask){
+          return "selected";
+        }
     }
   });
 
   Template.leaderboard.events({
     'mouseover .task': function(){
         // code goes here
-        console.log('bro');
+        //Session.set('selectedPlayer', 'session value test');
+        var taskId = this._id;
+        Session.set('selectedTask', taskId);
+
     }
   });
 }
