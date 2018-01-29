@@ -20,7 +20,10 @@ if(Meteor.isClient){
         //Session.set('selectedPlayer', 'session value test');
         var taskId = this._id;
         Session.set('selectedTask', taskId);
-
+    },
+    'click .close': function(){
+        var selectedTask = Session.get('selectedTask');
+        PlayersList.update({ _id: selectedTask }, { $set: {done:'1'}});
     }
   });
 }

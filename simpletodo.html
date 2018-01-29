@@ -3,13 +3,21 @@
 </head>
 <body>
     <h1>Leaderboard</h1>
+    {{> addTaskForm}}
     {{> leaderboard}}
 </body>
+
+<template name="addTaskForm">
+    <form>
+        <input type="text" name="taskName">
+        <input type="submit" value="Add Task">
+    </form>
+</template>
 
 <template name="leaderboard">
   <ul>
     {{#each player}}
-        <li class="task {{selectedClass}}">{{task}}: {{done}}</li>
+        <li class="task {{selectedClass}}">{{task}}: <button class="close">{{done}}</button></li>
     {{/each}}
   </ul>
 </template>
